@@ -19,7 +19,7 @@ def test_order(driver, name, surname, address, phone, button_selector, scroll_ne
 
     # Скроллим вниз, если требуется
     if scroll_needed:
-        driver.execute_script("window.scrollBy(0, 3000);")  # Скролл вниз на 400 пикселей
+        driver.execute_script("window.scrollBy(0, 2000);")  # Скролл вниз на 400 пикселей
         time.sleep(4)  # Небольшая пауза для стабильности теста
 
     # Ищем кнопку "Заказать" и кликаем
