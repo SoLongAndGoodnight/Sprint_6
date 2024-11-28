@@ -6,6 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
+from locators import QuestionQuantity
 
 BASE_URL = "https://qa-scooter.praktikum-services.ru/"
 
@@ -20,7 +21,7 @@ def test_question_quantity(driver):
         driver.implicitly_wait(1)  # Небольшая пауза после скролла
 
     #ищем вопрос
-    quantity = driver.find_element(By.XPATH, "//div[@id='accordion__heading-1' and @class='accordion__button']")
+    quantity = driver.find_element(*QuestionQuantity.QUESTION)
 
     #кликаем по вопросу
     quantity.click()
@@ -29,9 +30,7 @@ def test_question_quantity(driver):
                      "Если хотите покататься с друзьями, можете просто сделать несколько заказов — один за другим.")
 
     #ищем ожидаемый текст
-    text_element = driver.find_element(By.XPATH,
-                                       "//p[text()='Пока что у нас так: один заказ — один самокат. "
-                                       "Если хотите покататься с друзьями, можете просто сделать несколько заказов — один за другим.']")
+    text_element = driver.find_element(*QuestionQuantity.ANSWER)
 
     # Проверяем, что текст отобразился на странице
     assert expected_text in text_element.text, f"Текст не найден."

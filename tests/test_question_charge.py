@@ -6,10 +6,11 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
+from locators import QuestionCharge
 
 BASE_URL = "https://qa-scooter.praktikum-services.ru/"
 
-def test_question_return(driver):
+def test_question_charge(driver):
     driver.get(BASE_URL)
     driver.maximize_window()
     driver.implicitly_wait(3)
@@ -21,7 +22,7 @@ def test_question_return(driver):
     time.sleep(3)
 
     #поиск вопроса
-    question_charge = driver.find_element(By.XPATH, "//div[@id='accordion__heading-5' and @class='accordion__button']")
+    question_charge = driver.find_element(*QuestionCharge.QUESTION)
 
     #клик
     question_charge.click()
@@ -31,9 +32,6 @@ def test_question_return(driver):
                      "Зарядка не понадобится.")
 
     # ищем ожидаемый текст
-    text_element = driver.find_element(By.XPATH,
-                                       "//p[text()='Самокат приезжает к вам с полной зарядкой. Этого хватает на восемь "
-                                       "суток — даже если будете кататься без передышек и во сне. "
-                                       "Зарядка не понадобится.']")
+    text_element = driver.find_element(*QuestionCharge.ANSWER)
 
     assert expected_text in text_element.text, f"Текст не найден."

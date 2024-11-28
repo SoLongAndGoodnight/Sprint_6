@@ -6,6 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
+from locators import OrderToday
 
 BASE_URL = "https://qa-scooter.praktikum-services.ru/"
 
@@ -21,7 +22,7 @@ def test_question_price(driver):
     time.sleep(3)
 
     #поиск вопроса
-    order_today = driver.find_element(By.XPATH, "//div[@id='accordion__heading-3' and @class='accordion__button']")
+    order_today = driver.find_element(*OrderToday.QUESTION)
 
     #клик
     order_today.click()
@@ -29,7 +30,7 @@ def test_question_price(driver):
     expected_text = ("Только начиная с завтрашнего дня. Но скоро станем расторопнее.")
 
     #ищем ожидаемый текст
-    text_element = driver.find_element(By.XPATH,"//p[text()='Только начиная с завтрашнего дня. Но скоро станем расторопнее.']")
+    text_element = driver.find_element(*OrderToday.ANSWER)
 
     assert expected_text in text_element.text, f"Текст не найден."
 

@@ -5,6 +5,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from locators import OrderDifferentButton
 
 BASE_URL = "https://qa-scooter.praktikum-services.ru/"
 
@@ -27,40 +28,45 @@ def test_order(driver, name, surname, address, phone, button_selector, scroll_ne
 
     # Заполняем модальник заказа
     # Заполняем имя
-    driver.find_element(By.CSS_SELECTOR, "input[placeholder='* Имя']").send_keys(name)
+    driver.find_element(*OrderDifferentButton.NAME).send_keys(name)
 
     # Заполняем фамилию
-    driver.find_element(By.CSS_SELECTOR, "input[placeholder='* Фамилия']").send_keys(surname)
+    driver.find_element(*OrderDifferentButton.LAST_NAME).send_keys(surname)
 
     # Заполняем адрес
-    driver.find_element(By.CSS_SELECTOR, "input[placeholder='* Адрес: куда привезти заказ']").send_keys(address)
+    driver.find_element(*OrderDifferentButton.ADDRESS).send_keys(address)
 
     # Клик на поле с метро
-    driver.find_element(By.CSS_SELECTOR, "input[placeholder='* Станция метро']").click()
-    driver.find_element(By.CSS_SELECTOR, ".select-search__options [data-index='1']").click()
+    driver.find_element(*OrderDifferentButton.SUBWAY_FIELD).click()
+
+    driver.find_element(*OrderDifferentButton.SUBWAY_SELECT).click()
 
     # Заполняем телефон
-    driver.find_element(By.CSS_SELECTOR, "input[placeholder='* Телефон: на него позвонит курьер']").send_keys(phone)
+
+    driver.find_element(*OrderDifferentButton.PHONE).send_keys(phone)
 
     # Нажимаем кнопку "Далее"
-    driver.find_element(By.XPATH, "//button[contains(text(), 'Далее')]").click()
+    driver.find_element(*OrderDifferentButton.DALEE_BUTTON).click()
 
     # Заполняем календарь
-    driver.find_element(By.CSS_SELECTOR, "input[placeholder='* Когда привезти самокат']").click()
-    driver.find_element(By.XPATH, "//div[@aria-label='Choose воскресенье, 1-е декабря 2024 г.']").click()
+    driver.find_element(*OrderDifferentButton.CALENDAR).click()
+
+    driver.find_element(*OrderDifferentButton.CALENDAR_SELECT).click()
 
     # Указываем срок аренды
-    driver.find_element(By.XPATH, "//div[text()='* Срок аренды']").click()
-    driver.find_element(By.XPATH, "//div[text()='трое суток']").click()
+    driver.find_element(*OrderDifferentButton.RENT_DAYS).click()
+
+    driver.find_element(*OrderDifferentButton.RENT_DAYS_SELECT).click()
+
 
     # Выбираем цвет
-    driver.find_element(By.ID, "black").click()
+    driver.find_element(*OrderDifferentButton.COLOR).click()
 
     # Клик на кнопку "Заказать"
-    driver.find_element(By.XPATH, "//div[3]/button[2][text()='Заказать']").click()
+    driver.find_element(*OrderDifferentButton.ORDER_BUTTON).click()
 
     # Подтверждение заказа
-    driver.find_element(By.XPATH, "//div[2]/button[2][text()='Да']").click()
+    driver.find_element(*OrderDifferentButton.CONFIRM_BUTTON).click()
 
     # Ждем появления кнопки "Посмотреть статус"
     status_button = WebDriverWait(driver, 10).until(
