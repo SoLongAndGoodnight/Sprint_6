@@ -7,6 +7,8 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 
+from locators import QuestionTime
+
 BASE_URL = "https://qa-scooter.praktikum-services.ru/"
 
 def test_question_time(driver):
@@ -20,7 +22,7 @@ def test_question_time(driver):
         driver.implicitly_wait(1)  # Небольшая пауза после скролла
 
     # ищем вопрос
-    time = driver.find_element(By.XPATH, "//div[@id='accordion__heading-2' and @class='accordion__button']")
+    time = driver.find_element(*QuestionTime.QUESTION)
 
     #клик
     time.click()
@@ -30,9 +32,6 @@ def test_question_time(driver):
                      "Если мы привезли самокат 8 мая в 20:30, суточная аренда закончится 9 мая в 20:30.")
 
     # ищем ожидаемый текст
-    text_element = driver.find_element(By.XPATH,
-                                       "//p[text()='Допустим, вы оформляете заказ на 8 мая. Мы привозим самокат 8 мая в течение дня. "
-                     "Отсчёт времени аренды начинается с момента, когда вы оплатите заказ курьеру. "
-                     "Если мы привезли самокат 8 мая в 20:30, суточная аренда закончится 9 мая в 20:30.']")
+    text_element = driver.find_element(*QuestionTime.ANSWER)
 
     assert expected_text in text_element.text, f"Текст не найден."

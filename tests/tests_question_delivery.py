@@ -6,6 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
+from locators import QuestionDelivery
 
 BASE_URL = "https://qa-scooter.praktikum-services.ru/"
 
@@ -21,7 +22,7 @@ def test_question_cancellation(driver):
     time.sleep(3)
 
     #поиск вопроса
-    question_delivery = driver.find_element(By.XPATH, "//div[@id='accordion__heading-7' and @class='accordion__button']")
+    question_delivery = driver.find_element(*QuestionDelivery.QUESTION)
 
     #клик
     question_delivery.click()
@@ -29,7 +30,6 @@ def test_question_cancellation(driver):
     expected_text = ("Да, обязательно. Всем самокатов! И Москве, и Московской области.")
 
     # ищем ожидаемый текст
-    text_element = driver.find_element(By.XPATH,
-                                       "//p[text()='Да, обязательно. Всем самокатов! И Москве, и Московской области.']")
+    text_element = driver.find_element(*QuestionDelivery.ANSWER)
 
     assert expected_text in text_element.text, f"Текст не найден."
