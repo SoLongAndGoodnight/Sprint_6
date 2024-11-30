@@ -1,22 +1,16 @@
-import time
-
-import pytest
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from locators import MainPageLogoClick
-
+from pages.main_page import HomePageObject
 
 BASE_URL = "https://qa-scooter.praktikum-services.ru/order"
+
 
 def test_main_page_by_click_on_logo(driver):
     driver.get(BASE_URL)
     driver.implicitly_wait(3)
 
+    page_object = HomePageObject(driver)
+
     # ищем лого и кликаем
-    #driver.find_element(By.XPATH, "//*[@class='Header_Logo__23yGT']").click()
-    driver.find_element(*MainPageLogoClick.LOGO).click()
+    page_object.click_element_logo_main()
 
     #ищем на главной странице модуль и провеляем его отображение
-    #logo = driver.find_element(By.XPATH, "//*[@class='Home_Header__iJKdX']")
-    logo = driver.find_element(*MainPageLogoClick.LOGO)
-    assert logo.is_displayed()
+    assert page_object.element_logo_main.is_displayed()
