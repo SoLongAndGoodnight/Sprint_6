@@ -1,12 +1,6 @@
 import time
 
-import pytest
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.action_chains import ActionChains
-from locators import QuestionCharge
+from pages.main_page import HomePageObject
 
 BASE_URL = "https://qa-scooter.praktikum-services.ru/"
 
@@ -15,6 +9,8 @@ def test_question_charge(driver):
     driver.maximize_window()
     driver.implicitly_wait(3)
 
+    page_object = HomePageObject(driver)
+
     # Скролл вниз на 700 пикселей
     for _ in range(4):
         driver.execute_script("window.scrollBy(0, 700);")
@@ -22,16 +18,13 @@ def test_question_charge(driver):
     time.sleep(3)
 
     #поиск вопроса
-    question_charge = driver.find_element(*QuestionCharge.QUESTION)
-
     #клик
-    question_charge.click()
+    #question_charge.click()
+    page_object.click_question_button_three()
 
     expected_text = ("Самокат приезжает к вам с полной зарядкой. Этого хватает на восемь "
                      "суток — даже если будете кататься без передышек и во сне. "
                      "Зарядка не понадобится.")
 
     # ищем ожидаемый текст
-    text_element = driver.find_element(*QuestionCharge.ANSWER)
-
-    assert expected_text in text_element.text, f"Текст не найден."
+    assert expected_text in page_object.element_answer_005.text, f"Текст не найден."

@@ -1,19 +1,16 @@
 import time
 
-import pytest
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.action_chains import ActionChains
-from locators import OrderToday
+from pages.main_page import HomePageObject
 
 BASE_URL = "https://qa-scooter.praktikum-services.ru/"
+
 
 def test_question_price(driver):
     driver.get(BASE_URL)
     driver.maximize_window()
     driver.implicitly_wait(3)
+
+    page_object = HomePageObject(driver)
 
     # Скролл вниз на 500 пикселей
     for _ in range(4):
@@ -22,15 +19,11 @@ def test_question_price(driver):
     time.sleep(3)
 
     #поиск вопроса
-    order_today = driver.find_element(*OrderToday.QUESTION)
-
     #клик
-    order_today.click()
+    page_object.click_question_button_two()
 
     expected_text = ("Только начиная с завтрашнего дня. Но скоро станем расторопнее.")
 
     #ищем ожидаемый текст
-    text_element = driver.find_element(*OrderToday.ANSWER)
-
-    assert expected_text in text_element.text, f"Текст не найден."
+    assert expected_text in page_object.element_answer_008.text, f"Текст не найден."
 

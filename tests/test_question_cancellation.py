@@ -1,19 +1,15 @@
 import time
-
-import pytest
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.action_chains import ActionChains
-from locators import QuestionCancell
+from pages.main_page import HomePageObject
 
 BASE_URL = "https://qa-scooter.praktikum-services.ru/"
+
 
 def test_question_cancellation(driver):
     driver.get(BASE_URL)
     driver.maximize_window()
     driver.implicitly_wait(3)
+
+    page_object = HomePageObject(driver)
 
     # Скролл вниз на 700 пикселей
     for _ in range(4):
@@ -22,14 +18,10 @@ def test_question_cancellation(driver):
     time.sleep(3)
 
     #поиск вопроса
-    question_cancell = driver.find_element(*QuestionCancell.QUESTION)
-
     #клик
-    question_cancell.click()
+    page_object.click_question_button()
 
     expected_text = ("Да, пока самокат не привезли. Штрафа не будет, объяснительной записки тоже не попросим. Все же свои.")
 
     # ищем ожидаемый текст
-    text_element = driver.find_element(*QuestionCancell.ANSWER)
-
-    assert expected_text in text_element.text, f"Текст не найден."
+    assert expected_text in page_object.element_answer_006.text, f"Текст не найден."
