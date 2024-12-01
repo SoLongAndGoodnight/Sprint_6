@@ -2,12 +2,9 @@ from pages.main_page import HomePageObject
 import allure
 
 
-BASE_URL = "https://qa-scooter.praktikum-services.ru/"
-
-
 @allure.title("Проверка ответа на 'Как рассчитывается время аренды?'")
-def test_question_time(driver):
-    driver.get(BASE_URL)
+def test_question_time(driver, main_page_url):
+    driver.get(main_page_url)
     driver.maximize_window()
     driver.implicitly_wait(3)
 

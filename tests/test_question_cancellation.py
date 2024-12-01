@@ -2,12 +2,10 @@ import time
 import allure
 from pages.main_page import HomePageObject
 
-BASE_URL = "https://qa-scooter.praktikum-services.ru/"
-
 
 @allure.title("Проверка ответа на вопрос 'Можно ли отменить заказ?'")
-def test_question_cancellation(driver):
-    driver.get(BASE_URL)
+def test_question_cancellation(driver, main_page_url):
+    driver.get(main_page_url)
     driver.maximize_window()
     driver.implicitly_wait(3)
 

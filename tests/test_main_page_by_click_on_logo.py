@@ -1,12 +1,10 @@
 from pages.main_page import HomePageObject
 import allure
 
-BASE_URL = "https://qa-scooter.praktikum-services.ru/order"
-
 
 @allure.title("Проверка перехода на main page по клику на логотип")
-def test_main_page_by_click_on_logo(driver):
-    driver.get(BASE_URL)
+def test_main_page_by_click_on_logo(driver, order_page_url):
+    driver.get(order_page_url)
     driver.implicitly_wait(3)
 
     page_object = HomePageObject(driver)

@@ -1,12 +1,10 @@
 from pages.main_page import HomePageObject
 import allure
 
-BASE_URL = "https://qa-scooter.praktikum-services.ru/"
-
 
 @allure.title("Проверка ответа на 'Хочу сразу несколько самокатов! Так можно?'")
-def test_question_quantity(driver):
-    driver.get(BASE_URL)
+def test_question_quantity(driver, main_page_url):
+    driver.get(main_page_url)
     driver.maximize_window()
     driver.implicitly_wait(3)
 
