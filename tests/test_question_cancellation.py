@@ -17,11 +17,12 @@ def test_question_cancellation(driver):
         driver.implicitly_wait(1)  # Небольшая пауза после скролла
     time.sleep(3)
 
-    #поиск вопроса
-    #клик
+    # поиск вопроса + клик
     page_object.click_question_button()
 
-    expected_text = ("Да, пока самокат не привезли. Штрафа не будет, объяснительной записки тоже не попросим. Все же свои.")
+    expected_text = (
+        "Да, пока самокат не привезли. Штрафа не будет, объяснительной записки тоже не попросим. Все же свои."
+    )
 
     # ищем ожидаемый текст
     assert expected_text in page_object.element_cancel_answer.text, f"Текст не найден."

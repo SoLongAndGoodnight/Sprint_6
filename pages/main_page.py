@@ -1,7 +1,7 @@
 from locators.main_page import (
     QuestionCancel,
     QuestionReturn,
-    OrderToday,
+    QuestionOrderToday,
     QuestionCharge,
     QuestionPrice,
     QuestionQuantity,
@@ -31,18 +31,18 @@ class HomePageObject:
         self.element_question_button_one.click()
 
     @property
-    def element_question_button_two(self):
-        return self.driver.find_element(*OrderToday.QUESTION)
+    def element_question_order_today(self):
+        return self.driver.find_element(*QuestionOrderToday.QUESTION)
 
-    def click_question_button_two(self):
-        self.element_question_button_two.click()
+    def question_order_today_click(self):
+        self.element_question_order_today.click()
 
     @property
-    def element_question_button_three(self):
+    def element_question_charge(self):
         return self.driver.find_element(*QuestionCharge.QUESTION)
 
-    def click_question_button_three(self):
-        self.element_question_button_three.click()
+    def question_charge_click(self):
+        self.element_question_charge.click()
 
     @property
     def element_question_button_four(self):
@@ -116,5 +116,4 @@ class HomePageObject:
 
     @property
     def element_order_today_answer(self):
-        return self.driver.find_element(*OrderToday.ANSWER)
-
+        return self.driver.find_element(*QuestionOrderToday.ANSWER)

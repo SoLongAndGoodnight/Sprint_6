@@ -20,7 +20,7 @@ def test_question_price(driver):
 
     #поиск вопроса
     #клик
-    page_object.click_question_button_two()
+    page_object.question_order_today_click()
 
     expected_text = ("Только начиная с завтрашнего дня. Но скоро станем расторопнее.")
 
