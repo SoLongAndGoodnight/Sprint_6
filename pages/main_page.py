@@ -11,11 +11,10 @@ from locators.main_page import (
     MainPageLogoClick
 )
 
+from .base import BasePageObject
 
-class HomePageObject:
-    def __init__(self, driver_):
-        self.driver = driver_
 
+class HomePageObject(BasePageObject):
     @property
     def element_question_button(self):
         return self.driver.find_element(*QuestionCancel.QUESTION)

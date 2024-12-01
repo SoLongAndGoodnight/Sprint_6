@@ -3,11 +3,10 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 from locators.order_page import OrderDifferentButton
 
+from .base import BasePageObject
 
-class OrderPageObject:
-    def __init__(self, driver_):
-        self.driver = driver_
 
+class OrderPageObject(BasePageObject):
     @property
     def element_name(self):
         return self.driver.find_element(*OrderDifferentButton.NAME)
