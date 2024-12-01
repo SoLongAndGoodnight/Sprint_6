@@ -24,4 +24,4 @@ def test_question_cancellation(driver):
     expected_text = ("Да, пока самокат не привезли. Штрафа не будет, объяснительной записки тоже не попросим. Все же свои.")
 
     # ищем ожидаемый текст
-    assert expected_text in page_object.element_answer_006.text, f"Текст не найден."
+    assert expected_text in page_object.element_cancel_answer.text, f"Текст не найден."

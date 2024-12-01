@@ -26,4 +26,4 @@ def test_question_price(driver):
     expected_text = "Сутки — 400 рублей. Оплата курьеру — наличными или картой."
 
     # Проверяем, что текст отобразился на странице
-    assert expected_text in page_object.element_answer_002.text, f"Текст не найден."
+    assert expected_text in page_object.element_price_answer.text, f"Текст не найден."

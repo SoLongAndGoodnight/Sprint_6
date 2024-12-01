@@ -20,4 +20,4 @@ def test_question_return(driver):
     expected_text = ("Пока что нет! Но если что-то срочное — всегда можно позвонить в поддержку по красивому номеру 1010.")
 
     # ищем ожидаемый текст
-    assert expected_text in page_object.element_answer_007.text, f"Текст не найден."
+    assert expected_text in page_object.element_return_answer.text, f"Текст не найден."

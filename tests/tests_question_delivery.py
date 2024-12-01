@@ -23,4 +23,4 @@ def test_question_delivery(driver):
     expected_text = ("Да, обязательно. Всем самокатов! И Москве, и Московской области.")
 
     # ищем ожидаемый текст
-    assert expected_text in page_object.element_answer.text, f"Текст не найден."
+    assert expected_text in page_object.element_delivery_answer.text, f"Текст не найден."
