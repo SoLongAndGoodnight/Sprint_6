@@ -20,7 +20,7 @@ def test_question_charge(driver):
     #поиск вопроса
     #клик
     #question_charge.click()
-    page_object.click_question_button_three()
+    page_object.question_charge_click()
 
     expected_text = ("Самокат приезжает к вам с полной зарядкой. Этого хватает на восемь "
                      "суток — даже если будете кататься без передышек и во сне. "

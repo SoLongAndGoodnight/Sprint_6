@@ -47,7 +47,7 @@ def test_order(driver, name, surname, address, phone, is_upper_button, scroll_ne
     page_object.phone_fill(phone)
 
     # Нажимаем кнопку "Далее"
-    page_object.dalee_button()
+    page_object.next_button_click()
 
     # Заполняем календарь
     page_object.calendar_click()
@@ -57,16 +57,16 @@ def test_order(driver, name, surname, address, phone, is_upper_button, scroll_ne
     # Указываем срок аренды
     page_object.rent_click()
 
-    page_object.rent_select()
+    page_object.rent_days_select_click()
 
     # Выбираем цвет
     page_object.color_click()
 
     # Клик на кнопку "Заказать"
-    page_object.order_button()
+    page_object.order_button_click()
 
     # Подтверждение заказа
-    page_object.confirm_button()
+    page_object.confirm_button_click()
 
     # Ждем появления кнопки "Посмотреть статус"
     page_object.waiting_status_button()
