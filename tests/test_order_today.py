@@ -25,5 +25,5 @@ def test_question_price(driver):
     expected_text = ("Только начиная с завтрашнего дня. Но скоро станем расторопнее.")
 
     #ищем ожидаемый текст
-    assert expected_text in page_object.element_answer_008.text, f"Текст не найден."
+    assert expected_text in page_object.element_order_today_answer.text, f"Текст не найден."
 

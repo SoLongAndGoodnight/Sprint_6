@@ -21,4 +21,4 @@ def test_question_time(driver):
                      "Если мы привезли самокат 8 мая в 20:30, суточная аренда закончится 9 мая в 20:30.")
 
     # ищем ожидаемый текст
-    assert expected_text in page_object.element_answer_003.text, f"Текст не найден."
+    assert expected_text in page_object.element_time_answer.text, f"Текст не найден."

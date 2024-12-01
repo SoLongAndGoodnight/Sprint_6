@@ -22,4 +22,4 @@ def test_question_quantity(driver):
 
     #ищем ожидаемый текст
     # Проверяем, что текст отобразился на странице
-    assert expected_text in page_object.element_answer_004.text, f"Текст не найден."
+    assert expected_text in page_object.element_quantity_answer.text, f"Текст не найден."

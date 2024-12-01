@@ -27,4 +27,4 @@ def test_question_charge(driver):
                      "Зарядка не понадобится.")
 
     # ищем ожидаемый текст
-    assert expected_text in page_object.element_answer_005.text, f"Текст не найден."
+    assert expected_text in page_object.element_charge_answer.text, f"Текст не найден."
