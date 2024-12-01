@@ -1,9 +1,12 @@
 import time
 
 from pages.main_page import HomePageObject
+import allure
 
 BASE_URL = "https://qa-scooter.praktikum-services.ru/"
 
+
+@allure.title("Вы привозите зарядку вместе с самокатом?'")
 def test_question_charge(driver):
     driver.get(BASE_URL)
     driver.maximize_window()
