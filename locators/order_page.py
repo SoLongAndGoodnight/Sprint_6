@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 
 
-class OrderDifferentButton:
+class OrderPageLocators:
     NAME = (By.CSS_SELECTOR, "input[placeholder='* Имя']")
     SURNAME = (By.CSS_SELECTOR, "input[placeholder='* Фамилия']")
     ADDRESS = (By.CSS_SELECTOR, "input[placeholder='* Адрес: куда привезти заказ']")
