@@ -1,11 +1,12 @@
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
+import allure
 from pages.main_page import HomePageObject
 
 BASE_URL = "https://qa-scooter.praktikum-services.ru/"
 
 
+@allure.title("Проверка редиректа на dzen")
 def test_redirect(driver):
     driver.get(BASE_URL)
     driver.implicitly_wait(3)

@@ -1,11 +1,13 @@
 import time
 
+import allure
 import pytest
 from pages.order_page import OrderPageObject
 
 BASE_URL = "https://qa-scooter.praktikum-services.ru/"
 
 
+@allure.title("Проверка заказа самоката с разных точек входа")
 @pytest.mark.parametrize("name, surname, address, phone, is_upper_button, scroll_needed", [
     ("Лизочка", "Тестова", "Примерная ул", "+7999004128", True, False),  # Верхняя кнопка
     ("Андрей", "Иванов", "Тестовая ул, д. 5", "+7999123456", False, True)  # Нижняя кнопка
